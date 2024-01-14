@@ -48,7 +48,7 @@ resource "helm_release" "aws-load-balancer-controller" {
 locals {
   k8s = {
     type    = "eks"
-    cluster = "dev"
+    cluster = var.cluster_name
   }
 }
 
