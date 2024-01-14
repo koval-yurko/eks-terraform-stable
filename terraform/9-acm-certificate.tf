@@ -1,9 +1,11 @@
 provider "aws" {
+  profile = var.profile
   region = var.region
   alias  = "certificates"
 }
 
 provider "aws" {
+  profile = var.profile
   region = var.region
   alias  = "dns"
 }
