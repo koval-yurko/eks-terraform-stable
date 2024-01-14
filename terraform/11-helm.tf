@@ -112,7 +112,7 @@ resource "helm_release" "external-dns" {
 }
 
 resource "aws_iam_role" "external_dns" {
-  name = "external-dns-dev"
+  name = "external-dns-${var.cluster_name}"
 
   assume_role_policy = <<EOF
 {
@@ -147,7 +147,7 @@ resource "aws_iam_role_policy_attachment" "external_dns" {
 }
 
 resource "aws_iam_policy" "external_dns" {
-  name        = "external-dns-dev"
+  name        = "external-dns-${var.cluster_name}"
   description = "Policy using OIDC to give the EKS external dns ServiceAccount permissions to update Route53"
 
   policy = <<EOF
