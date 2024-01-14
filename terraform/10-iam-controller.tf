@@ -6,7 +6,7 @@ data "aws_iam_policy_document" "aws_load_balancer_controller_assume_role_policy"
     condition {
       test     = "StringEquals"
       variable = "${replace(aws_iam_openid_connect_provider.eks.url, "https://", "")}:sub"
-      values   = ["system:serviceaccount:kube-system:aws-load-balancer-controller"]
+      values   = ["system:serviceaccount:kube-system:aws-load-balancer-controller-${var.cluster_name}"]
     }
 
     principals {
@@ -266,7 +266,7 @@ resource "aws_iam_policy" "aws_load_balancer_controller" {
 }
  POLICY
 
-  name = "AWSLoadBalancerController"
+  name = "AWSLoadBalancerController-${var.cluster_name}"
 }
 
 

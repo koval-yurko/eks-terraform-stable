@@ -18,7 +18,7 @@ POLICY
 
 # allow eks control plane logging
 resource "aws_iam_policy" "eks_control_plane_logs" {
-  name   = "eks-control-plane-logs-policy"
+  name   = "eks-control-plane-logs-policy-${var.cluster_name}"
   policy = <<POLICY
 {
   "Version": "2012-10-17",

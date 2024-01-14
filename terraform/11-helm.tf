@@ -12,7 +12,7 @@ provider "helm" {
 }
 #aws loadbalancer controller
 resource "helm_release" "aws-load-balancer-controller" {
-  name = "aws-load-balancer-controller"
+  name = "aws-load-balancer-controller-${var.cluster_name}"
 
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
@@ -30,7 +30,7 @@ resource "helm_release" "aws-load-balancer-controller" {
   }
   set {
     name  = "serviceAccount.name"
-    value = "aws-load-balancer-controller"
+    value = "aws-load-balancer-controller-${var.cluster_name}"
   }
 
   set {
